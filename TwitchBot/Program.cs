@@ -15,6 +15,7 @@ namespace TwitchBot
         public static void Main(string[] args)
         {
             Int32 port = 6667;
+            //Int32 port = 443;
             string[] ignoreBots = { "moobot", "nightbot", "whale_bot" };
             
             // Get a client stream for reading and writing.
@@ -56,7 +57,8 @@ namespace TwitchBot
 
                 //start bot               
                 TwitchResponseWriter tw = new TwitchResponseWriter(stream);
-                KatBot katbot = new KatBot(tw);
+                //KatBot katbot = new KatBot(tw);
+                RoflBot roflbot = null;
 
                 while (true)
                 {
@@ -88,6 +90,9 @@ namespace TwitchBot
                     // Print out the received message to the console.
                     Console.WriteLine(sbMessage.ToString());
 #endif
+
+                    if(roflbot == null)
+                        roflbot = new RoflBot(tw);
 
                     switch (sbMessage.ToString())
                     {
@@ -123,13 +128,14 @@ namespace TwitchBot
                                     // Ignore some well known bots
                                     if (!ignoreBots.Contains(sendingUser[0].ToLowerInvariant()))
                                     {
-                                        katbot.ProcessMessage(sendingUser[0], message[2]);
+                                        roflbot.SendRandomMessage();
+                                        //katbot.ProcessMessage(sendingUser[0], message[2]);
                                     }
                                 }
                                 // A user joined.
                                 else if (preamble[1] == "JOIN")
                                 {
-                                    katbot.ProcessJoinEvent(sendingUser[0]);
+                                    //katbot.ProcessJoinEvent(sendingUser[0]);
                                 }
 
 #if DEBUG

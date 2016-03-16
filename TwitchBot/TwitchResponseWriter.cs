@@ -18,7 +18,7 @@ namespace TwitchBot
         {
             //safeguard against bot spam
             //TODO: queue messages
-            if (lastMessageSent.AddMinutes(2) < DateTime.Now)
+            if (lastMessageSent.AddSeconds(10) < DateTime.Now)
             {
                 string commandText = string.Format("PRIVMSG #{0} :{1} says {2}\r\n", Config.ChannelName, Config.BotName, message);
                 //string commandText = string.Format("{0}!{0}@{0}.tmi.twitch.tv PRIVMSG #{0} :KatBot says {1}\r\n", Config.ChannelName, message);
