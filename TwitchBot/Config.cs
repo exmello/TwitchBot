@@ -48,5 +48,38 @@ namespace TwitchBot
                 return _botname;
             }
         }
+
+        private static string _chatServer;
+        public static string ChatServer
+        {
+            get
+            {
+                if (_chatServer == null)
+                    _chatServer = ConfigurationManager.AppSettings["TwitchBot.ChatServer"];
+                return _chatServer;
+            }
+        }
+
+        private static int? _port;
+        public static int Port
+        {
+            get
+            {
+                if (!_port.HasValue)
+                    _port = int.Parse(ConfigurationManager.AppSettings["TwitchBot.Port"]);
+                return _port.Value;
+            }
+        }
+
+        private static bool? _ignoreSelf;
+        public static bool IgnoreSelf
+        {
+            get
+            {
+                if (!_ignoreSelf.HasValue)
+                    _ignoreSelf = bool.Parse(ConfigurationManager.AppSettings["TwitchBot.IgnoreSelf"]);
+                return _ignoreSelf.Value;
+            }
+        }
     }
 }

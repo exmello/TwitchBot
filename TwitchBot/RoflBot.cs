@@ -55,7 +55,7 @@ namespace TwitchBot
                 "What kind of Alienware computer should I get?",
                 "Quit your bitching Roflgator DansGame",
                 "☐ Not rekt☑ Rekt☑ Really Rekt☑ Tyrannosaurus Rekt☑ Cash4Rekt.com☑ Grapes of Rekt☑ Ship Rekt☑ Rekt markes the spot☑ Caught rekt handed☑ The Rekt Side Story☑ Singin' In The Rekt☑ Painting The Roses Rekt☑ Rekt Van Winkle☑ Parks and Rekt☑ Lord of the Rekts: The Reking of the King☑ Star Trekt☑ The Rekt Prince of Bel-Air☑ A Game of Rekt☑ Rektflix☑ Rekt it like it's hot☑ RektBox 360☑ The Rekt-men☑ School Of Rekt☑ I am Fire, I am Rekt☑ Rekt and Roll☑ Pro",
-                "ヽヽ｀ヽ｀、ヽヽ｀ヽ｀、ヽヽ｀ヽ、ヽヽ｀ヽ｀、ヽヽ｀ヽ｀、｀、ヽヽ｀ヽ｀、ヽヽ｀ヽ｀、ヽヽ｀ヽ｀、ヽヽ｀ヽ｀、ヽヽ｀ヽ｀、ヽヽ｀ヽ｀、ヽヽ༼ຈل͜ຈ༽ﾉ☂ ɪᴛs ʀᴀɪɴɪɴɢ sᴀʟᴛ! ヽ༼ຈل͜ຈ༽ﾉ☂ ヽ｀ヽ｀、ヽヽ｀ヽ｀、｀ヽ｀、ヽヽ｀ヽ｀、ヽヽ｀ヽ、ヽヽ｀ヽ"
+                "ヽヽ｀ヽ｀、ヽヽ｀ヽ｀、ヽヽ｀ヽ、ヽヽ｀ヽ｀、ヽヽ｀ヽ｀、｀、ヽヽ｀ヽ｀、ヽヽ｀ヽ｀、ヽヽ｀ヽ｀、ヽヽ｀ヽ｀、ヽヽ｀ヽ｀、ヽヽ｀ヽ｀、ヽヽ༼ຈل͜ຈ༽ﾉ☂ ɪᴛs ʀᴀɪɴɪɴɢ sᴀʟᴛ! ヽ༼ຈل͜ຈ༽ﾉ☂ ヽ｀ヽ｀、ヽヽ｀ヽ｀、｀ヽ｀、ヽヽ｀ヽ｀、ヽヽ｀ヽ、ヽヽ｀ヽ",
                 "~~~*~~~~*~~ don't let your memes be dreams ~~~*~~"
             };
 

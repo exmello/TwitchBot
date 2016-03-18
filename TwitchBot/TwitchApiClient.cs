@@ -22,12 +22,15 @@ namespace TwitchBot
             string jsonText = string.Empty;
            
             using (var client = new System.Net.Http.HttpClient())
+            using (var request = new HttpRequestMessage(HttpMethod.Get, url))
             {
-                var request = new HttpRequestMessage(HttpMethod.Get, url);
                 var clientTask = client.SendAsync(request);
                 clientTask.Wait();
                 HttpResponseMessage response = clientTask.Result;
-                response.EnsureSuccessStatusCode();
+
+                if (!response.IsSuccessStatusCode)
+                    return null;
+                //response.EnsureSuccessStatusCode();
 
                 var contentTask = response.Content.ReadAsStringAsync();
                 contentTask.Wait();
@@ -48,8 +51,13 @@ namespace TwitchBot
 
         public FollowTargetResult FollowTarget(string user, string channel)
         {
-            string url = string.Format("http://api.twitch.tv/kraken/users/{0}/follows/channels/{1}", user, channel);
+            //channel = "itskatnip";
+            string url = string.Format("https://api.twitch.tv/kraken/users/{0}/follows/channels/{1}", user, channel);
             string json = GetJsonText(url);
+
+            if (json == null)
+                return null;
+
             return ParseJson<FollowTargetResult>(json);
         }
     }

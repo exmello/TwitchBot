@@ -18,7 +18,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -48,12 +48,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config.cs" />
+    <Compile Include="Model\ITwitchBot.cs" />
+    <Compile Include="Model\MessageActionType.cs" />
+    <Compile Include="Model\MessageInfo.cs" />
     <Compile Include="RoflBot.cs" />
     <Compile Include="KatBot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TwitchApi.cs" />
+    <Compile Include="TwitchApiClient.cs" />
     <Compile Include="TwitchApi\Result\FollowTargetResult.cs" />
+    <Compile Include="TwitchConnection.cs" />
+    <Compile Include="TwitchRawMessageProcessor.cs" />
     <Compile Include="TwitchResponseWriter.cs" />
   </ItemGroup>
   <ItemGroup>
