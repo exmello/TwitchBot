@@ -60,5 +60,16 @@ namespace TwitchBot
 
             return ParseJson<FollowTargetResult>(json);
         }
+
+        public StreamResult Stream(string channel)
+        {
+            string url = string.Format("https://api.twitch.tv/kraken/streams/{0}", channel);
+            string json = GetJsonText(url);
+
+            if (json == null)
+                return null;
+
+            return ParseJson<StreamResult>(json);
+        }
     }
 }

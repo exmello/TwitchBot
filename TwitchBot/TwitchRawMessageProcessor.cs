@@ -17,6 +17,7 @@ namespace TwitchBot
 
             return new MessageInfo
             {
+                Channel = preamble.Length > 2 ? preamble[2].TrimStart('#') : null,
                 Action = MapActionType(preamble[1]),
                 Username = sendingUser[0],
                 Content = message.Length > 2 ? message[2] : null

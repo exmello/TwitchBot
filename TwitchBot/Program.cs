@@ -5,6 +5,7 @@ using System;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
+using TwitchBot.Commands;
 using TwitchBot.Model;
 
 namespace TwitchBot
@@ -25,8 +26,16 @@ namespace TwitchBot
                 connection.JoinChannel(Config.ChannelName);
                 Console.WriteLine("Sent channel join.\r\n");
 
+                //twitch JSON api for bots to use
+                TwitchApiClient api = new TwitchApiClient();
+
                 //start bot   
-                KatBot katbot = new KatBot(connection.Writer);
+                KatBot katbot = new KatBot(connection.Writer, api);
+
+                //add commands
+                katbot.CommandList.Add(new Command(connection.Writer));
+                katbot.CommandList.Add(new HowLong(connection.Writer, api));
+                katbot.CommandList.Add(new Uptime(connection.Writer, api));
 
                 //Start message loop
                 while (true)
