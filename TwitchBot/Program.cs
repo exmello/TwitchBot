@@ -5,8 +5,10 @@ using System;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
+using TwitchBot.Akinator;
 using TwitchBot.Commands;
 using TwitchBot.Model;
+using TwitchBot.TwitchApi;
 
 namespace TwitchBot
 {
@@ -31,11 +33,12 @@ namespace TwitchBot
 
                 //start bot   
                 KatBot katbot = new KatBot(connection.Writer, api);
+                AkinatorBot akinatorBot = new AkinatorBot(connection.Writer, api);
 
                 //add commands
-                katbot.CommandList.Add(new Command(connection.Writer));
-                katbot.CommandList.Add(new HowLong(connection.Writer, api));
-                katbot.CommandList.Add(new Uptime(connection.Writer, api));
+                katbot.CommandList.Add(new Commands.Command(connection.Writer));
+                katbot.CommandList.Add(new Commands.HowLong(connection.Writer, api));
+                katbot.CommandList.Add(new Commands.Uptime(connection.Writer, api));
 
                 //Start message loop
                 while (true)
@@ -45,6 +48,11 @@ namespace TwitchBot
                     if (message != null)
                     {
                         katbot.ProcessMessage(message);
+                        akinatorBot.ProcessMessage(message);
+                    }
+                    else
+                    {
+                        akinatorBot.Update();
                     }
                 }
             }

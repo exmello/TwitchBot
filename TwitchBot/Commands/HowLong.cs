@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using TwitchBot.Model;
+using TwitchBot.TwitchApi;
 
 namespace TwitchBot.Commands
 {
@@ -61,7 +62,7 @@ namespace TwitchBot.Commands
                 }
                 else
                 {
-                    int days = Convert.ToInt32((DateTime.Now - followData.created_at).TotalDays);
+                    int days = Convert.ToInt32((DateTime.Now - created).TotalDays);
                     tw.RespondMessage(string.Format("user @{0} has been following {1} for {2} day{3}!"
                         , username, channel, days, days == 1 ? string.Empty : "s"));
                 }

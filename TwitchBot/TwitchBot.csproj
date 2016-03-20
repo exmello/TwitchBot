@@ -47,6 +47,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Akinator\AkinatorBot.cs" />
+    <Compile Include="Akinator\Api\AkinatorApiClient.cs" />
+    <Compile Include="Akinator\Api\ListResponse.cs" />
+    <Compile Include="Akinator\Api\NewSessionResponse.cs" />
+    <Compile Include="Akinator\Api\AnswerResponse.cs" />
+    <Compile Include="Akinator\Character.cs" />
+    <Compile Include="Akinator\Command.cs" />
+    <Compile Include="Akinator\Question.cs" />
+    <Compile Include="Akinator\State.cs" />
     <Compile Include="Commands\Uptime.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\HowLong.cs" />
@@ -59,7 +68,7 @@
     <Compile Include="KatBot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TwitchApiClient.cs" />
+    <Compile Include="TwitchApi\TwitchApiClient.cs" />
     <Compile Include="TwitchApi\Result\StreamResult.cs" />
     <Compile Include="TwitchApi\Result\FollowTargetResult.cs" />
     <Compile Include="TwitchConnection.cs" />

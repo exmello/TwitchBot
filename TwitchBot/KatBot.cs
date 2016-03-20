@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using TwitchBot.Commands;
 using TwitchBot.Model;
+using TwitchBot.TwitchApi;
 
 namespace TwitchBot
 {
@@ -100,6 +101,11 @@ namespace TwitchBot
         }
 
         private void TimeoutUser(string username, int timeout)
+        {
+            //implement
+        }
+
+        public void Update()
         {
             //implement
         }
