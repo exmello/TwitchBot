@@ -69,7 +69,7 @@ namespace TwitchBot.Akinator.Api
 
         public ListResponse List(string session, string signature, int step)
         {
-            string url = string.Format("{0}list?session={1}&signature={2}&step={3}&size=2&max_pic_width=246&max_pic_height=294&pref_photos=OK-FR&mode_question=0", _url, session, signature, step);
+            string url = string.Format("{0}list?session={1}&signature={2}&step={3}&size=2&max_pic_width=246&max_pic_height=294&pref_photos=VO-OK&mode_question=0", _url, session, signature, step);
             string json = GetJsonText(url);
 
             if (json == null)

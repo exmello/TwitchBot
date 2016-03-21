@@ -68,6 +68,7 @@
     <Compile Include="KatBot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TwitchApi\Result\ChattersResult.cs" />
     <Compile Include="TwitchApi\TwitchApiClient.cs" />
     <Compile Include="TwitchApi\Result\StreamResult.cs" />
     <Compile Include="TwitchApi\Result\FollowTargetResult.cs" />

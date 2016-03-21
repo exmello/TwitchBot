@@ -8,34 +8,28 @@ namespace TwitchBot.Akinator.Api
 {
     public class ListResponse
     {
+        public string completion { get; set; }
+
         public Parameters parameters { get; set; }
 
         public class Parameters
         {            
-            public StepInformation step_information { get; set; }
-            public class StepInformation
-            {
-                public string question { get; set; }
-                public Answer[] answers { get; set; }
-                public class Answer
-                {
-                    public string answer { get; set; }
-                }
-
-                public string step { get; set; }
-                public string progression { get; set; }
-                public string questionid { get; set; }
-                public string infogain { get; set; }
-            }
-
             public Element[] elements { get; set; }
             public class Element
             {
-                public string id { get; set; }
-                public string name { get; set; }
-                public decimal proba { get; set; }
-                public string picture_path { get; set; }
+                public ElementInfo element { get; set; }
+                public class ElementInfo
+                {
+                    public string id { get; set; }
+                    public string name { get; set; }
+                    public decimal proba { get; set; }
+                    public string description { get; set; }
+                    public string picture_path { get; set; }
+                    public string absolute_picture_path { get; set; }
+                }
             }
         }
+
+        public int NbObjetsPertinents { get; set; }
     }
 }

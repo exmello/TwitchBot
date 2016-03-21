@@ -31,7 +31,7 @@ namespace TwitchBot.Akinator.Api
                 }
 
                 public string step { get; set; }
-                public string progression { get; set; }
+                public decimal progression { get; set; }
                 public string questionid { get; set; }
                 public string infogain { get; set; }
             }

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace TwitchBot
 {
@@ -8,6 +10,8 @@ namespace TwitchBot
 
         private readonly Stream _stream;
         private DateTime lastMessageSent = DateTime.MinValue;
+        private Queue<string> messageQueue = new Queue<string>();
+        private Object syncLock = new Object();
 
         public TwitchResponseWriter(Stream stream)
         {
@@ -16,17 +20,38 @@ namespace TwitchBot
 
         public void RespondMessage(string message)
         {
-            //safeguard against bot spam
-            //TODO: queue messages
-            if (lastMessageSent.AddSeconds(2) < DateTime.Now)
+            //if the message queue is small, add.  otherwise only add if unique
+            //Queue.Contains might be an expensive operation?
+            if (messageQueue.Count < 4 || !messageQueue.Contains(message))
             {
-                string commandText = string.Format("PRIVMSG #{0} :{1}\r\n", Config.ChannelName, message);
-                //string commandText = string.Format("{0}!{0}@{0}.tmi.twitch.tv PRIVMSG #{0} :KatBot says {1}\r\n", Config.ChannelName, message);
-                WriteToStream(commandText);
+                messageQueue.Enqueue(message);
+            }
+
+            Task.Run(() => RespondFromQueue());
+        }
+
+        public void RespondFromQueue()
+        {
+            lock (syncLock)
+            {
+                while (messageQueue.Count > 0)
+                {
+                    //safeguard against bot spam
+                    if (lastMessageSent.AddSeconds(2) < DateTime.Now)
+                    {
+                        string message = messageQueue.Dequeue();
+
+                        string commandText = string.Format("PRIVMSG #{0} :{1}\r\n", Config.ChannelName, message);
+                        //string commandText = string.Format("{0}!{0}@{0}.tmi.twitch.tv PRIVMSG #{0} :KatBot says {1}\r\n", Config.ChannelName, message);
+                        WriteToStream(commandText);
 #if DEBUG
-                Console.WriteLine("You sent the following message : {0}", commandText);
+                        Console.WriteLine("You sent the following message : {0}", commandText);
 #endif
-                lastMessageSent = DateTime.Now;
+                        lastMessageSent = DateTime.Now;
+                    }
+
+                    
+                }
             }
         }
 

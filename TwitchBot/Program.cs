@@ -49,10 +49,7 @@ namespace TwitchBot
                     {
                         katbot.ProcessMessage(message);
                         akinatorBot.ProcessMessage(message);
-                    }
-                    else
-                    {
-                        akinatorBot.Update();
+                        //akinatorBot.Update();
                     }
                 }
             }

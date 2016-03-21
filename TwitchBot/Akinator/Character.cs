@@ -10,15 +10,16 @@ namespace TwitchBot.Akinator
     {
         public string Id { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
         public decimal Probability { get; set; }
         public string Photo { get; set; }
 
         public Character(ListResponse.Parameters.Element ele)
         {
-            Id = ele.id;
-            Name = ele.name;
-            Probability = ele.proba;
-            Photo = ele.picture_path;
+            Id = ele.element.id;
+            Name = ele.element.name;
+            Probability = ele.element.proba;
+            Photo = ele.element.absolute_picture_path;
         }
     }
 }

@@ -66,5 +66,16 @@ namespace TwitchBot.TwitchApi
 
             return ParseJson<StreamResult>(json);
         }
+
+        public ChattersResult Chatters(string channel)
+        {
+            string url = string.Format("https://tmi.twitch.tv/group/user/{0}/chatters", channel);
+            string json = GetJsonText(url);
+
+            if (json == null)
+                return null;
+
+            return ParseJson<ChattersResult>(json);
+        }
     }
 }

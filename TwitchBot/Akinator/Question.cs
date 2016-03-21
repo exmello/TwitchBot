@@ -11,7 +11,7 @@ namespace TwitchBot.Akinator
     {
         public KeyValuePair<string, string> Question { get; set; }
         public IList<string> Answers { get; set; }
-        public bool Last { get; set; }
+        public decimal Progression { get; set; }
 
         public QuestionData(NewSessionResponse response)
         {
@@ -21,7 +21,7 @@ namespace TwitchBot.Akinator
             Answers = response.parameters.step_information.answers
                 .Select(ans => ans.answer)
                 .ToList();
-            Last = response.parameters.step_information.progression == "100";
+            Progression = response.parameters.step_information.progression;
         }
 
         public QuestionData(AnswerResponse response)
@@ -32,7 +32,7 @@ namespace TwitchBot.Akinator
             Answers = response.parameters.answers
                 .Select(ans => ans.answer)
                 .ToList();
-            Last = response.parameters.progression == "100";
+            Progression = response.parameters.progression;
         }
     }
 }
