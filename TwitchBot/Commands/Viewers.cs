@@ -44,9 +44,12 @@ namespace TwitchBot.Commands
             {
                 string streamID = stream.stream._id;
 
-                int uniqueViewers = repo.GetUniqueViewerCount(message.Channel, streamID);
+                int uniqueViewers = repo.GetUniqueViewerCount(message.Channel.Trim(), streamID);
 
-                tw.RespondMessage(string.Format("There have been {0} unique viewers since the beginning of {1}'s stream", uniqueViewers, message.Channel));
+                if (uniqueViewers > 0)
+                {
+                    tw.RespondMessage(string.Format("There have been {0} unique viewers since the beginning of {1}'s stream", uniqueViewers, message.Channel));
+                }
             }
         }
 
@@ -64,10 +67,10 @@ namespace TwitchBot.Commands
 
                     if (message.Username != Config.Nickname && !ignoreBots.Contains(message.Username.ToLowerInvariant()))
                     {
-                        repo.AddUpdateViewer(message.Username, message.Channel, streamID);
+                        repo.AddUpdateViewer(message.Username, message.Channel.Trim(), streamID);
                     }
 
-                    var chatters = api.Chatters(message.Channel);
+                    var chatters = api.Chatters(message.Channel.Trim());
 
                     if (chatters != null)
                     {
@@ -79,7 +82,7 @@ namespace TwitchBot.Commands
                             .Where(u => u != Config.Nickname && !ignoreBots.Contains(u.ToLowerInvariant()))
                             .Distinct();
 
-                        repo.AddUpdateViewers(users, message.Channel, streamID);
+                        repo.AddUpdateViewers(users, message.Channel.Trim(), streamID);
                     }
                 }
             }

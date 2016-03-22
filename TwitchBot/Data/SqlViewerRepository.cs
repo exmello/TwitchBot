@@ -13,8 +13,10 @@ namespace TwitchBot.Data
         {
             string connString = Config.ConnectionString;
             using (SqlConnection conn = new SqlConnection(connString))
-            using (SqlCommand comm = new SqlCommand("sp_Viewer_AddUpdate", conn))
+            using (SqlCommand comm = new SqlCommand("sp_Viewer_AddUpdate @usernames, @channel, @streamID", conn))
             {
+                conn.Open();
+
                 var prms = new SqlParameter[]
                 {
                     new SqlParameter("usernames", System.Data.SqlDbType.VarChar, -1) { Value = user },
@@ -24,7 +26,7 @@ namespace TwitchBot.Data
 
                 comm.Parameters.AddRange(prms);
 
-                comm.BeginExecuteNonQuery();
+                comm.ExecuteNonQuery();
             }
         }
         
@@ -32,8 +34,10 @@ namespace TwitchBot.Data
         {
             string connString = Config.ConnectionString;
             using (SqlConnection conn = new SqlConnection(connString))
-            using (SqlCommand comm = new SqlCommand("sp_Viewer_AddUpdate", conn))
+            using (SqlCommand comm = new SqlCommand("sp_Viewer_AddUpdate @usernames, @channel, @streamID", conn))
             {
+                conn.Open();
+
                 string userString = string.Join(";", users);
 
                 var prms = new SqlParameter[]
@@ -45,7 +49,7 @@ namespace TwitchBot.Data
 
                 comm.Parameters.AddRange(prms);
 
-                comm.BeginExecuteNonQuery();
+                comm.ExecuteNonQuery();
             }
         }
 
@@ -53,18 +57,25 @@ namespace TwitchBot.Data
         {
             string connString = Config.ConnectionString;
             using (SqlConnection conn = new SqlConnection(connString))
-            using (SqlCommand comm = new SqlCommand("sp_GetUniqueViewerCount", conn))
+            using (SqlCommand comm = new SqlCommand("sp_GetUniqueViewerCount @streamID", conn))
             {
+                conn.Open();
+
                 var prms = new SqlParameter[]
                 {
-                    new SqlParameter("channel", System.Data.SqlDbType.VarChar, 50) { Value = channel },
                     new SqlParameter("streamID", System.Data.SqlDbType.VarChar, 50) { Value = streamID },
                 };
 
                 comm.Parameters.AddRange(prms);
 
-                int count = (int)comm.ExecuteScalar();
-                return count;
+                SqlDataReader reader = comm.ExecuteReader();
+
+                if(reader.Read())
+                {
+                    return (int)reader[0];
+                }
+
+                return 0;
             }
         }
 
