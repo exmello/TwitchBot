@@ -55,7 +55,7 @@ namespace TwitchBot
                 if (message.Content.StartsWith("!"))
                     RespondToCommands(message);
 
-                //RespondToKeywords(message);
+                RespondToKeywords(message);
             }
         }
 
@@ -81,13 +81,13 @@ namespace TwitchBot
 
         private Regex regLettuce = new Regex("lettuce", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
         private Regex regKebab = new Regex("kebab|kabob", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
-        private Regex regNips = new Regex("nips", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
+        private Regex regNips = new Regex("nips|nipple", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
 
         private void RespondToKeywords(MessageInfo message)
         {
             if (regNips.IsMatch(message.Content))
             {
-                tw.RespondMessage("It's KatNIP. No 's'! BibleThump");
+                tw.RespondMessage("It's KatNIP! BibleThump");
             }
             else if (regLettuce.IsMatch(message.Content))
             {

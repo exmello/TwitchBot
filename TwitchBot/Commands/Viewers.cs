@@ -48,6 +48,7 @@ namespace TwitchBot.Commands
 
                 if (uniqueViewers > 0)
                 {
+                    tw.RespondMessage(string.Format("{0} is playing {1} and currently has {2} viewers", message.Channel, stream.stream.game, stream.stream.viewers));
                     tw.RespondMessage(string.Format("There have been {0} unique viewers since the beginning of {1}'s stream", uniqueViewers, message.Channel));
                 }
             }
