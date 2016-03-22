@@ -7,6 +7,7 @@ using System.Net.Sockets;
 using System.Text;
 using TwitchBot.Akinator;
 using TwitchBot.Commands;
+using TwitchBot.Data;
 using TwitchBot.Model;
 using TwitchBot.TwitchApi;
 
@@ -28,17 +29,25 @@ namespace TwitchBot
                 connection.JoinChannel(Config.ChannelName);
                 Console.WriteLine("Sent channel join.\r\n");
 
+                // subscribe to events
+                responseData = connection.SubcribeToMembershipEvents(Config.ChannelName);
+                Console.WriteLine("Subcribe to JOIN/PART: \r\n\r\n{0}", responseData);
+
                 //twitch JSON api for bots to use
                 TwitchApiClient api = new TwitchApiClient();
 
+                //db storage
+                IViewerRepository viewerDb = new SqlViewerRepository();
+
                 //start bot   
                 KatBot katbot = new KatBot(connection.Writer, api);
-                AkinatorBot akinatorBot = new AkinatorBot(connection.Writer, api);
+                //AkinatorBot akinatorBot = new AkinatorBot(connection.Writer, api);
 
                 //add commands
                 katbot.CommandList.Add(new Commands.Command(connection.Writer));
                 katbot.CommandList.Add(new Commands.HowLong(connection.Writer, api));
                 katbot.CommandList.Add(new Commands.Uptime(connection.Writer, api));
+                katbot.CommandList.Add(new Commands.Viewers(connection.Writer, api, viewerDb));
 
                 //Start message loop
                 while (true)
@@ -48,7 +57,7 @@ namespace TwitchBot
                     if (message != null)
                     {
                         katbot.ProcessMessage(message);
-                        akinatorBot.ProcessMessage(message);
+                        //akinatorBot.ProcessMessage(message);
                         //akinatorBot.Update();
                     }
                 }

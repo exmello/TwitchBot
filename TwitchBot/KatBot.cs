@@ -16,6 +16,7 @@ namespace TwitchBot
         private readonly string[] ignoreBots;
 
         public IList<ICommand> CommandList { get; set; }
+        public IList<IEvent> EventList { get; set; }
 
         public KatBot(TwitchResponseWriter tw, TwitchApiClient api)
         {
@@ -24,6 +25,7 @@ namespace TwitchBot
             this.ignoreBots = new string[] { "moobot", "nightbot", "whale_bot" };
             
             CommandList = new List<ICommand>();
+            EventList = new List<IEvent>();
             
             // Lets you know its working
             //tw.RespondMessage("KatBot Activating MrDestructoid");
@@ -39,11 +41,10 @@ namespace TwitchBot
                     //Act on message content
                     ProcessChatMessage(message);
                 }
-            }   
-            else if (message.Action == MessageActionType.Join)
+            }
+            else
             {
-                //Act on join event
-                //ProcessJoinEvent(message.Username);
+                RespondToEvents(message);
             }
         }
 
@@ -60,13 +61,21 @@ namespace TwitchBot
 
         private void RespondToCommands(MessageInfo message)
         {
-            foreach (ICommand command in CommandList)
+            foreach (ICommand command in CommandList.OfType<ICommand>())
             {
                 if(command.IsMatch(message))
                 {
                     command.Process(message);
                     return;
                 }
+            }
+        }
+
+        private void RespondToEvents(MessageInfo message)
+        {
+            foreach (IEvent evnt in CommandList.OfType<IEvent>())
+            {
+                evnt.Process(message);
             }
         }
 

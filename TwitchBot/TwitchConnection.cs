@@ -140,5 +140,13 @@ namespace TwitchBot
         {
             Writer.WriteToStream(string.Format("JOIN #{0}\r\n", channelName));
         }
+
+        public string SubcribeToMembershipEvents(string channelName)
+        {
+            Writer.WriteToStream(string.Format("CAP REQ :twitch.tv/membership\r\n", channelName));
+
+            // Read the first batch of the TcpServer response bytes.
+            return ReadResponse(512);
+        }
     }
 }

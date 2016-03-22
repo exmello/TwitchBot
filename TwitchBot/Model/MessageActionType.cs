@@ -10,6 +10,7 @@ namespace TwitchBot.Model
     {
         Unknown,
         Join, // "JOIN"
+        Part, // "PART"
         Message // "PRIVMSG"
     }
 }

@@ -12,6 +12,8 @@ namespace TwitchBot.TwitchApi.Result
 
         public class StreamObject
         {
+            public string _id { get; set; }
+            public string game { get; set; }
             public DateTime created_at { get; set; }
         }        
     }

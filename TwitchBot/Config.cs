@@ -49,7 +49,7 @@ namespace TwitchBot
             }
         }
 
-        private static string _chatServer;
+        private static string _chatServer = null;
         public static string ChatServer
         {
             get
@@ -79,6 +79,17 @@ namespace TwitchBot
                 if (!_ignoreSelf.HasValue)
                     _ignoreSelf = bool.Parse(ConfigurationManager.AppSettings["TwitchBot.IgnoreSelf"]);
                 return _ignoreSelf.Value;
+            }
+        }
+
+        private static string _connectionString = null;
+        public static string ConnectionString
+        {
+            get
+            {
+                if (_connectionString == null)
+                    _connectionString = ConfigurationManager.AppSettings["TwitchBot.ConnectionString"];
+                return _connectionString;
             }
         }
     }
