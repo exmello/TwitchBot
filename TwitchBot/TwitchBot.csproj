@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>TwitchBot.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -66,14 +69,19 @@
     <Compile Include="Akinator\Question.cs" />
     <Compile Include="Akinator\State.cs" />
     <Compile Include="Commands\IEvent.cs" />
+    <Compile Include="Commands\Madlib.cs" />
     <Compile Include="Commands\Viewers.cs" />
     <Compile Include="Commands\Uptime.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\HowLong.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="Data\IDictionaryRepository.cs" />
+    <Compile Include="Data\SqlDictionaryRepository.cs" />
     <Compile Include="Data\SqlViewerRepository.cs" />
     <Compile Include="Data\IViewerRepository.cs" />
+    <Compile Include="Dictionary\DictionaryParser.cs" />
+    <Compile Include="Dictionary\WordsResult.cs" />
     <Compile Include="Model\ITwitchBot.cs" />
     <Compile Include="Model\MessageActionType.cs" />
     <Compile Include="Model\MessageInfo.cs" />
@@ -92,6 +100,18 @@
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Dictionary\data.adj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dictionary\data.adv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dictionary\data.noun">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dictionary\data.verb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Sample App.config">
       <SubType>Designer</SubType>

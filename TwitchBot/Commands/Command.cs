@@ -29,7 +29,7 @@ namespace TwitchBot.Commands
 
         public void Process(MessageInfo message)
         {
-            tw.RespondMessage("Commands: !howlong [user], !uptime [channel]");
+            tw.RespondMessage("Commands: !howlong [user], !uptime [channel], !viewers, !madlib [template] (template keywords: noun/adjective/verb/adverb)");
         }
     }
 }
