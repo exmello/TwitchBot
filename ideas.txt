@@ -1,11 +1,18 @@
-!wet http://plays.tv/stream/56ecc4e05514ee14af
+(removed on request) !wet http://plays.tv/stream/56ecc4e05514ee14af
 !website http://itskatnip.com
 !contact itskatnipkat@gmail.com
-!howwet dry moist soaked
+(removed on request) !howwet dry moist soaked
 
 
 gamble
 banner ads
 follow hype
 
-you should add a non repetitive variable to count how many individual viewers there have been from beginning of stream to end
+(completed) you should add a non repetitive variable to count how many individual viewers there have been from beginning of stream to end
+(completed) madlib
+
+@itskatnipbot (Config.Nickname) Who/What/Where/When/Why
+ - Who, pick random user
+ - What/Why/Where noun / random chance of Yes
+ - When soon
+ - Can ? yes/no/maybe/probably/probably not/idk ask ur mom
