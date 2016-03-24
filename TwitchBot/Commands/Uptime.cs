@@ -17,19 +17,17 @@ namespace TwitchBot.Commands
         private readonly TwitchResponseWriter tw;
         private readonly TwitchApiClient api;
         private readonly Regex regUptime;
-        private readonly Regex regHowWet;
 
         public Uptime(TwitchResponseWriter tw, TwitchApiClient api)
         {
             this.tw = tw;
             this.api = api;
             this.regUptime = new Regex("^!uptime\\s(?<channel>[0-9a-zA-Z_]*?)\\s$", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
-            this.regHowWet = new Regex("^!howwet\\s(?<channel>[0-9a-zA-Z_]*?)\\s$", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
         }
 
         public bool IsMatch(MessageInfo message)
         {
-            return regUptime.IsMatch(message.Content) || regHowWet.IsMatch(message.Content);
+            return regUptime.IsMatch(message.Content);// || regHowWet.IsMatch(message.Content);
         }
 
         public void Process(MessageInfo message)
@@ -44,20 +42,6 @@ namespace TwitchBot.Commands
                 else
                 {
                     RespondUptimeMesssage(message.Channel);
-                }
-                return;
-            }
-
-            match = regHowWet.Match(message.Content);
-            if (match.Success)
-            {
-                if (!string.IsNullOrWhiteSpace(match.Groups["channel"].Value))
-                {
-                    RespondUptimeMesssage(match.Groups["channel"].Value, true);
-                }
-                else
-                {
-                    RespondUptimeMesssage(message.Channel, true);
                 }
                 return;
             }
@@ -76,12 +60,6 @@ namespace TwitchBot.Commands
 
                     StringBuilder sb = new StringBuilder();
                     
-                    if(wet)
-                    {
-                        if(uptime.Hours >= 3)
-                            sb.AppendFormat("Soaked. http://plays.tv/stream/56ecc4e05514ee14af ", channel);
-                    }
-
                     sb.AppendFormat("@{0} has been streaming for", channel);
 
                     if (uptime.Days == 1)

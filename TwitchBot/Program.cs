@@ -39,6 +39,7 @@ namespace TwitchBot
                 //db storage
                 IViewerRepository viewerDb = new SqlViewerRepository();
                 IDictionaryRepository dictionaryDb = new SqlDictionaryRepository();
+                ISettingsRepository settingsDb = new SqlSettingsRepository();
 
                 //start bot   
                 KatBot katbot = new KatBot(connection.Writer, api);
@@ -50,6 +51,9 @@ namespace TwitchBot
                 katbot.CommandList.Add(new Commands.Uptime(connection.Writer, api));
                 katbot.CommandList.Add(new Commands.Viewers(connection.Writer, api, viewerDb));
                 katbot.CommandList.Add(new Commands.Madlib(connection.Writer, dictionaryDb));
+
+                katbot.KeywordProcessors.Add(new Commands.Question(connection.Writer, api, dictionaryDb));
+                katbot.KeywordProcessors.Add(new Commands.KeywordMatcher(connection.Writer, settingsDb));
 
                 //Start message loop
                 while (true)

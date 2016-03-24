@@ -17,6 +17,7 @@ namespace TwitchBot
 
         public IList<ICommand> CommandList { get; set; }
         public IList<IEvent> EventList { get; set; }
+        public IList<IKeyword> KeywordProcessors { get; set; }
 
         public KatBot(TwitchResponseWriter tw, TwitchApiClient api)
         {
@@ -26,9 +27,11 @@ namespace TwitchBot
             
             CommandList = new List<ICommand>();
             EventList = new List<IEvent>();
+            KeywordProcessors = new List<IKeyword>();
             
             // Lets you know its working
             //tw.RespondMessage("KatBot Activating MrDestructoid");
+            //tw.RespondMessage("test");
         }
 
         public void ProcessMessage(MessageInfo message)
@@ -79,23 +82,11 @@ namespace TwitchBot
             }
         }
 
-        private Regex regLettuce = new Regex("lettuce", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
-        private Regex regKebab = new Regex("kebab|kabob", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
-        private Regex regNips = new Regex("nips|nipple", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
-
         private void RespondToKeywords(MessageInfo message)
         {
-            if (regNips.IsMatch(message.Content))
+            foreach (IKeyword keyword in KeywordProcessors)
             {
-                tw.RespondMessage("It's KatNIP! BibleThump");
-            }
-            else if (regLettuce.IsMatch(message.Content))
-            {
-                tw.RespondMessage("Did someone say LETTUCE? PogChamp");
-            }
-            else if (regKebab.IsMatch(message.Content))
-            {
-                tw.RespondMessage("KEBAB? I prefer lettuce. FailFish");
+                keyword.Process(message);
             }
         }
 
