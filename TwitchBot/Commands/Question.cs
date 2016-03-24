@@ -27,7 +27,7 @@ namespace TwitchBot.Commands
             this.tw = tw;
             this.api = api;
             this.repo = repo;
-            this.regQuestion = new Regex("^@(?<user>[a-zA-Z_0-9]+?)\\s+(?<prefix>(who|where|when|what|why|can|do|is)?)(\\s.*)?[?]\\s$", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
+            this.regQuestion = new Regex("^@(?<user>[a-zA-Z_0-9]+?)\\s+(?<prefix>(who|which|where|when|what|why|can|do|is|does|are)?)(\\s.*)?[?]\\s$", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
             this.regPretty = new Regex("pretty|beautiful|wonderful|sexy|bae|(best lucio)|(best mercy)", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
             random = new Random((int)DateTime.Now.Ticks);
         }
@@ -52,6 +52,7 @@ namespace TwitchBot.Commands
                 switch (match.Groups["prefix"].Value.ToLowerInvariant())
                 {
                     case "who":
+                    case "which":
                         answer = Who(message);
                         break;
                     case "where":
@@ -69,6 +70,8 @@ namespace TwitchBot.Commands
                     case "can":
                     case "do":
                     case "is":
+                    case "are":
+                    case "does":
                         answer = Can();
                         break;
                     default:
@@ -85,7 +88,7 @@ namespace TwitchBot.Commands
         private string Can()
         {
             string[] phrases = { "yes", "no", "maybe", "probably", "probably not", "idk ask ur mom" };
-            return phrases[random.Next(phrases.Length) - 1];
+            return phrases[random.Next(phrases.Length)];
         }
 
         private string What()
