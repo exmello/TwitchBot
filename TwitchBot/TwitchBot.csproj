@@ -80,6 +80,7 @@
     <Compile Include="Commands\HowLong.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Config.cs" />
+    <Content Include="Data\Create Database.sql" />
     <Compile Include="Data\ISettingsRepository.cs" />
     <Compile Include="Data\IDictionaryRepository.cs" />
     <Compile Include="Data\SqlSettingsRepository.cs" />
