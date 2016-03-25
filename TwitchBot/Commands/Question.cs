@@ -27,7 +27,7 @@ namespace TwitchBot.Commands
             this.tw = tw;
             this.api = api;
             this.repo = repo;
-            this.regQuestion = new Regex("^@(?<user>[a-zA-Z_0-9]+?)\\s+(?<prefix>(who|which|where|when|what|why|can|do|is|does|are)?)(\\s.*)?[?]\\s$", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
+            this.regQuestion = new Regex("^@(?<user>[a-zA-Z_0-9]+?)\\s+(?<prefix>(who|which|where|when|what|why|can|do|is|does|are|how|will)?)(\\s.*)?[?]\\s$", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
             this.regPretty = new Regex("pretty|beautiful|wonderful|sexy|bae|(best lucio)|(best mercy)", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
             random = new Random((int)DateTime.Now.Ticks);
         }
@@ -56,6 +56,7 @@ namespace TwitchBot.Commands
                         answer = Who(message);
                         break;
                     case "where":
+                    case "how":
                         answer = What();
                         break;
                     case "when":
@@ -67,14 +68,8 @@ namespace TwitchBot.Commands
                     case "why":
                         answer = What() + " and why not?";
                         break;
-                    case "can":
-                    case "do":
-                    case "is":
-                    case "are":
-                    case "does":
-                        answer = Can();
-                        break;
                     default:
+                        answer = Can();
                         break;
                 }
 

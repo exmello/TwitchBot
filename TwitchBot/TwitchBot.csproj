@@ -71,6 +71,7 @@
     <Compile Include="Commands\IKeyword.cs" />
     <Compile Include="Commands\IEvent.cs" />
     <Compile Include="Commands\KeywordMatcher.cs" />
+    <Compile Include="Commands\FullWidth.cs" />
     <Compile Include="Commands\Question.cs" />
     <Compile Include="Commands\Madlib.cs" />
     <Compile Include="Commands\Viewers.cs" />
