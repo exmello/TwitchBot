@@ -30,7 +30,7 @@ namespace TwitchBot
             KeywordProcessors = new List<IKeyword>();
             
             // Lets you know its working
-            tw.RespondMessage("MrDestructoid MrDestructoid MrDestructoid MrDestructoid MrDestructoid MrDestructoid MrDestructoid");
+            //tw.RespondMessage("MrDestructoid MrDestructoid MrDestructoid MrDestructoid MrDestructoid MrDestructoid MrDestructoid");
             //tw.RespondMessage("test");
         }
 

@@ -11,5 +11,6 @@ namespace TwitchBot.Model
         public int ID { get; set; }
         public string Regex { get; set; }
         public string Message { get; set; }
+        public string Username { get; set; }
     }
 }

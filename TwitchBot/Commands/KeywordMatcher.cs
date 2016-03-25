@@ -18,13 +18,14 @@ namespace TwitchBot.Commands
         private readonly TwitchResponseWriter tw;
         private readonly ISettingsRepository repo;
 
-        private IList<Regex> regKeywords = null;
-        private IList<Keyword> keywords = null;
+        private IList<KeywordRegex> keywordRegex = null;
 
         public KeywordMatcher(TwitchResponseWriter tw, ISettingsRepository repo)
         {
             this.tw = tw;
             this.repo = repo;
+
+            LoadKeywords();
         }
 
         public bool IsMatch(MessageInfo message)
@@ -34,40 +35,45 @@ namespace TwitchBot.Commands
 
         void IKeyword.Process(MessageInfo message)
         {
-            if(regKeywords == null)
-            {
-                LoadKeywords();
-            }
-
             string response = string.Empty;
 
-            for (int i = 0; i < regKeywords.Count; i++)
-			{
-                if(regKeywords[i].IsMatch(message.Content))
-                {
-                    response = keywords[i].Message;
-                    break;
-                }
+            //find match by username
+            KeywordRegex match = keywordRegex.FirstOrDefault(k =>
+                k.Keyword.Username != null &&
+                k.Keyword.Username.ToLowerInvariant() == message.Username.ToLowerInvariant() &&
+                k.Regex.IsMatch(message.Content));
+
+            if(match == null)
+            {
+                match = keywordRegex.FirstOrDefault(k =>
+                k.Keyword.Username == null &&
+                k.Regex.IsMatch(message.Content));
             }
 
-            if (!string.IsNullOrEmpty(response))
+            if (match != null)
             {
-                tw.RespondMessage(response);
+                tw.RespondMessage(match.Keyword.Message);
             }
-            
         }
 
         private void LoadKeywords()
         {
-            var keywordData = repo.GetAllKeywords();
+            var keywords = repo.GetAllKeywords();
 
-            if (keywordData != null)
+            if (keywords != null)
             {
-                regKeywords = keywordData.Select(k => new Regex(k.Regex, RegexOptions.CultureInvariant | RegexOptions.IgnoreCase)).ToList();
-                keywords = keywordData.ToList();
+                keywordRegex = keywords.Select(k => new KeywordRegex
+                {
+                    Keyword = k,
+                    Regex = new Regex(k.Regex, RegexOptions.CultureInvariant | RegexOptions.IgnoreCase)
+                }).ToList();
             }
         }
 
-
+        internal class KeywordRegex
+        {
+            public Keyword Keyword { get; set; }
+            public Regex Regex { get; set; }
+        }
     }
 }

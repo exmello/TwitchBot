@@ -53,7 +53,7 @@ namespace TwitchBot
                 katbot.CommandList.Add(new Commands.Madlib(connection.Writer, dictionaryDb));
 
                 katbot.KeywordProcessors.Add(new Commands.Question(connection.Writer, api, dictionaryDb));
-                //katbot.KeywordProcessors.Add(new Commands.KeywordMatcher(connection.Writer, settingsDb));
+                katbot.KeywordProcessors.Add(new Commands.KeywordMatcher(connection.Writer, settingsDb));
 
                 //Start message loop
                 while (true)

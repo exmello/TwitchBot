@@ -28,6 +28,7 @@ namespace TwitchBot.Data
                         ID = (int)reader["ID"],
                         Regex = (string)reader["Regex"],
                         Message = (string)reader["Message"],
+                        Username = reader["Username"] != DBNull.Value ? (string)reader["Username"] : null
                     };
                 }
             }

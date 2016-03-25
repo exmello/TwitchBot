@@ -57,7 +57,13 @@ namespace TwitchBot
 
         public void WriteToStream(string text)
         {
-            Byte[] bytes = System.Text.Encoding.ASCII.GetBytes(text);
+            Byte[] bytes = System.Text.Encoding.UTF8.GetBytes(text);
+            _stream.Write(bytes, 0, bytes.Length);
+        }
+
+        public void WriteToStreamUnicode(string text)
+        {
+            Byte[] bytes = System.Text.Encoding.Unicode.GetBytes(text);
             _stream.Write(bytes, 0, bytes.Length);
         }
 
