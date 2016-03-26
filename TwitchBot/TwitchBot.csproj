@@ -106,9 +106,6 @@
     <Compile Include="TwitchResponseWriter.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Dictionary\data.adj">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -120,6 +117,9 @@
     </None>
     <None Include="Dictionary\data.verb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
     </None>
     <None Include="Sample App.config">
       <SubType>Designer</SubType>

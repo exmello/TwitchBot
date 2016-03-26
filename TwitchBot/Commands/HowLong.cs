@@ -38,7 +38,7 @@ namespace TwitchBot.Commands
                 if (!string.IsNullOrWhiteSpace(match.Groups["user"].Value))
                 {
                     if (match.Groups["user"].Value.ToLowerInvariant() == "roflgator")
-                        tw.RespondMessage("16 inches");
+                        tw.RespondMessage("6 inches of salt");
                     else
                         RespondFollowMesssage(match.Groups["user"].Value, message.Channel);
                 }

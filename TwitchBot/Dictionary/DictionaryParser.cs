@@ -12,10 +12,10 @@ namespace TwitchBot.Dictionary
     {
         public static void Main(string[] args)
         {
-            //ImportWords("Dictionary/data.verb", "insert into Verbs_import values (@word)");
-            //ImportWords("Dictionary/data.adj", "insert into Adjectives_import values (@word)");
-            //ImportWords("Dictionary/data.noun", "insert into Nouns_import values (@word)");
-            //ImportWords("Dictionary/data.adv", "insert into Adverbs_import values (@word)");
+            ImportWords("Dictionary/data.verb", "if not exists(select 1 from Verbs where word = @word) insert into Verbs values (@word)");
+            ImportWords("Dictionary/data.adj", "if not exists(select 1 from Adjectives where word = @word) insert into Adjectives values (@word)");
+            ImportWords("Dictionary/data.noun", "if not exists(select 1 from Nouns where word = @word) insert into Nouns values (@word)");
+            ImportWords("Dictionary/data.adv", "if not exists(select 1 from Adverbs where word = @word) insert into Adverbs values (@word)");
         }
 
         private static void ImportWords(string file, string command)
