@@ -40,10 +40,13 @@ namespace TwitchBot
                 IViewerRepository viewerDb = new SqlViewerRepository();
                 IDictionaryRepository dictionaryDb = new SqlDictionaryRepository();
                 ISettingsRepository settingsDb = new SqlSettingsRepository();
+                IQuoteRepository quoteDb = new SqlQuoteRepository();
 
                 //start bot   
                 KatBot katbot = new KatBot(connection.Writer, api);
                 //AkinatorBot akinatorBot = new AkinatorBot(connection.Writer, api);
+
+                var quoteCommand = new Commands.Quote(connection.Writer, settingsDb, quoteDb);
 
                 //add commands
                 katbot.CommandList.Add(new Commands.Command(connection.Writer));
@@ -52,9 +55,11 @@ namespace TwitchBot
                 katbot.CommandList.Add(new Commands.Viewers(connection.Writer, api, viewerDb));
                 katbot.CommandList.Add(new Commands.Madlib(connection.Writer, dictionaryDb));
                 katbot.CommandList.Add(new Commands.FullWidth(connection.Writer));
+                katbot.CommandList.Add(quoteCommand);
 
                 katbot.KeywordProcessors.Add(new Commands.Question(connection.Writer, api, dictionaryDb));
                 katbot.KeywordProcessors.Add(new Commands.KeywordMatcher(connection.Writer, settingsDb));
+                katbot.KeywordProcessors.Add(quoteCommand);
 
                 //Start message loop
                 while (true)

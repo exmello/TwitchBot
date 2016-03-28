@@ -70,6 +70,7 @@
     <Compile Include="Akinator\State.cs" />
     <Compile Include="Commands\IKeyword.cs" />
     <Compile Include="Commands\IEvent.cs" />
+    <Compile Include="Commands\Quote.cs" />
     <Compile Include="Commands\KeywordMatcher.cs" />
     <Compile Include="Commands\FullWidth.cs" />
     <Compile Include="Commands\Question.cs" />
@@ -81,6 +82,8 @@
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Config.cs" />
     <Content Include="Data\Create Database.sql" />
+    <Compile Include="Data\SqlQuoteRepository.cs" />
+    <Compile Include="Data\IQuoteRepository.cs" />
     <Compile Include="Data\ISettingsRepository.cs" />
     <Compile Include="Data\IDictionaryRepository.cs" />
     <Compile Include="Data\SqlSettingsRepository.cs" />
@@ -90,6 +93,8 @@
     <Compile Include="Dictionary\DictionaryParser.cs" />
     <Compile Include="Dictionary\WordsResult.cs" />
     <Compile Include="Model\ITwitchBot.cs" />
+    <Compile Include="Model\Quote.cs" />
+    <Compile Include="Model\Nickname.cs" />
     <Compile Include="Model\Keyword.cs" />
     <Compile Include="Model\MessageActionType.cs" />
     <Compile Include="Model\MessageInfo.cs" />

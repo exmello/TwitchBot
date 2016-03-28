@@ -34,5 +34,25 @@ namespace TwitchBot.Data
             }
         }
 
+        public IEnumerable<Nickname> GetAllNicknames()
+        {
+            string connString = Config.ConnectionString;
+            using (SqlConnection conn = new SqlConnection(connString))
+            using (SqlCommand comm = new SqlCommand("sp_Nickname_GetAll", conn))
+            {
+                conn.Open();
+
+                SqlDataReader reader = comm.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    yield return new Nickname
+                    {
+                        Username = (string)reader["Username"],
+                        Regex = (string)reader["Regex"]
+                    };
+                }
+            }
+        }
     }
 }

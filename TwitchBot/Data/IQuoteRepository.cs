@@ -8,9 +8,10 @@ using TwitchBot.Model;
 
 namespace TwitchBot.Data
 {
-    public interface ISettingsRepository
+    public interface IQuoteRepository
     {
-        IEnumerable<Keyword> GetAllKeywords();
-        IEnumerable<Nickname> GetAllNicknames();
+        void AddUpdate(Quote quote);
+        Quote GetRandom();
+        Quote GetRandomByName(string name);
     }
 }
