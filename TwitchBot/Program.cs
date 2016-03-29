@@ -41,6 +41,7 @@ namespace TwitchBot
                 IDictionaryRepository dictionaryDb = new SqlDictionaryRepository();
                 ISettingsRepository settingsDb = new SqlSettingsRepository();
                 IQuoteRepository quoteDb = new SqlQuoteRepository();
+                IBlasphemyRepository blasphDb = new SqlBlasphemyRepository();
 
                 //start bot   
                 KatBot katbot = new KatBot(connection.Writer, api);
@@ -56,6 +57,7 @@ namespace TwitchBot
                 katbot.CommandList.Add(new Commands.Madlib(connection.Writer, dictionaryDb));
                 katbot.CommandList.Add(new Commands.FullWidth(connection.Writer));
                 katbot.CommandList.Add(new Commands.Define(connection.Writer, dictionaryDb));
+                katbot.CommandList.Add(new Commands.Blasphemy(connection.Writer, api, blasphDb));
                 katbot.CommandList.Add(quoteCommand);
 
                 katbot.KeywordProcessors.Add(new Commands.Question(connection.Writer, api, dictionaryDb));

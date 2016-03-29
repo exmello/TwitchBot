@@ -68,6 +68,7 @@
     <Compile Include="Akinator\Command.cs" />
     <Compile Include="Akinator\Question.cs" />
     <Compile Include="Akinator\State.cs" />
+    <Compile Include="Commands\Blasphemy.cs" />
     <Compile Include="Commands\IKeyword.cs" />
     <Compile Include="Commands\IEvent.cs" />
     <Compile Include="Commands\Define.cs" />
@@ -83,6 +84,8 @@
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Config.cs" />
     <Content Include="Data\Create Database.sql" />
+    <Compile Include="Data\IBlasphemyRepository.cs" />
+    <Compile Include="Data\SqlBlasphemyRepository.cs" />
     <Compile Include="Data\SqlQuoteRepository.cs" />
     <Compile Include="Data\IQuoteRepository.cs" />
     <Compile Include="Data\ISettingsRepository.cs" />
@@ -101,6 +104,7 @@
     <Compile Include="Model\Keyword.cs" />
     <Compile Include="Model\MessageActionType.cs" />
     <Compile Include="Model\MessageInfo.cs" />
+    <Compile Include="Model\VerseNames.cs" />
     <Compile Include="RoflBot.cs" />
     <Compile Include="KatBot.cs" />
     <Compile Include="Program.cs" />
