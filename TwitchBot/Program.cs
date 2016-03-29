@@ -55,6 +55,7 @@ namespace TwitchBot
                 katbot.CommandList.Add(new Commands.Viewers(connection.Writer, api, viewerDb));
                 katbot.CommandList.Add(new Commands.Madlib(connection.Writer, dictionaryDb));
                 katbot.CommandList.Add(new Commands.FullWidth(connection.Writer));
+                katbot.CommandList.Add(new Commands.Define(connection.Writer, dictionaryDb));
                 katbot.CommandList.Add(quoteCommand);
 
                 katbot.KeywordProcessors.Add(new Commands.Question(connection.Writer, api, dictionaryDb));

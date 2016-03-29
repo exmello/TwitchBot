@@ -35,5 +35,33 @@ namespace TwitchBot.Data
             }
         }
 
+        public DefinitionResult GetDefinition(string word)
+        {
+            string connString = Config.ConnectionString;
+            using (SqlConnection conn = new SqlConnection(connString))
+            using (SqlCommand comm = new SqlCommand("sp_Dictionary_GetDefinition @Word", conn))
+            {
+                conn.Open();
+
+                var prms = new SqlParameter[] { new SqlParameter("Word", System.Data.SqlDbType.VarChar, -1) { Value = word } };
+
+                comm.Parameters.AddRange(prms);
+
+                SqlDataReader reader = comm.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    return new DefinitionResult
+                    {
+                        Word = (string)reader["Word"],
+                        Definition = (string)reader["Definition"],
+                        PartOfSpeech = (string)reader["PartOfSpeech"],
+                    };
+                }
+
+                return null;
+            }
+        }
+
     }
 }

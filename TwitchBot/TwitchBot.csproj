@@ -70,6 +70,7 @@
     <Compile Include="Akinator\State.cs" />
     <Compile Include="Commands\IKeyword.cs" />
     <Compile Include="Commands\IEvent.cs" />
+    <Compile Include="Commands\Define.cs" />
     <Compile Include="Commands\Quote.cs" />
     <Compile Include="Commands\KeywordMatcher.cs" />
     <Compile Include="Commands\FullWidth.cs" />
@@ -90,7 +91,9 @@
     <Compile Include="Data\SqlDictionaryRepository.cs" />
     <Compile Include="Data\SqlViewerRepository.cs" />
     <Compile Include="Data\IViewerRepository.cs" />
+    <Compile Include="Dictionary\DefinitionParser.cs" />
     <Compile Include="Dictionary\DictionaryParser.cs" />
+    <Compile Include="Dictionary\DefinitionResult.cs" />
     <Compile Include="Dictionary\WordsResult.cs" />
     <Compile Include="Model\ITwitchBot.cs" />
     <Compile Include="Model\Quote.cs" />
