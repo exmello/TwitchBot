@@ -1,17 +1,22 @@
-!website http://itskatnip.com
-!contact itskatnipkat@gmail.com
+(completed) !website http://itskatnip.com
+(completed) !contact itskatnipkat@gmail.com
+(completed) you should add a non repetitive variable to count how many individual viewers there have been from beginning of stream to end
+(completed) madlib
+(completed) @itskatnipbot (Config.Nickname) Who/What/Where/When/Why
 
+(deferred until more data) !stats [user] . count how many streams and duration user has viewed
+
+!bnet #asdf1234 . add bnet info for current user
+!bnet [user] . query bnet info of [user]
+!small equiv to !full unicode conversion
 
 gamble
 banner ads
 follow hype
 
-(completed) you should add a non repetitive variable to count how many individual viewers there have been from beginning of stream to end
-(completed) madlib
+weekend projects: 
+ - web admin controls
+ - hosting
+ - twitchalerts
 
-(completed) @itskatnipbot (Config.Nickname) Who/What/Where/When/Why
-
-!stats [user] . count how many streams and duration user has viewed
-
-weekend project: web admin controls
 
