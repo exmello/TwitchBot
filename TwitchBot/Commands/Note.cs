@@ -26,7 +26,7 @@ namespace TwitchBot.Commands
             this.tw = tw;
             this.repo = repo;
             this.regCommand = new Regex("^!note\\s", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
-            this.regUser = new Regex("^!note\\s(?<user>[0-9a-zA-Z_]+?)\\s$", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
+            this.regUser = new Regex("^!note\\s@?(?<user>[0-9a-zA-Z_]+?)\\s$", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
             this.regNote = new Regex("^!note\\s(?<note>.*?)\\s$", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
         }
 

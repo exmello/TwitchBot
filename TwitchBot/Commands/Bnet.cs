@@ -27,7 +27,7 @@ namespace TwitchBot.Commands
             this.repo = repo;
             this.regCommand = new Regex("^!bnet\\s", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
             this.regBnet = new Regex("^!bnet\\s(?<bnet>[0-9a-zA-Z]+#[0-9]{4}?)\\s$", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
-            this.regUser = new Regex("^!bnet\\s(?<user>[0-9a-zA-Z_]*?)\\s$", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
+            this.regUser = new Regex("^!bnet\\s@?(?<user>[0-9a-zA-Z_]*?)\\s$", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
         }
 
         public bool IsMatch(MessageInfo message)

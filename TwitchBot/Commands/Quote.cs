@@ -24,7 +24,7 @@ namespace TwitchBot.Commands
 
         private IList<NicknameRegex> nicknameRegex = null;
         private Regex commandRegex = new Regex("^!quote\\s?@?(?<attribution>[0-9a-zA-Z_]*?)\\s$", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
-        private Regex quoteRegex = new Regex("^\"(?<text>-?[^\"]+?)\"\\s?-?@?(?<attribution>[0-9a-zA-Z_]*?)\\s.*\\s$", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
+        private Regex quoteRegex = new Regex("^\"(?<text>-?[^\"]+?)\"[- ]*@?(?<attribution>[0-9a-zA-Z_]*?)\\s.*\\s$", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
 
         public Quote(TwitchResponseWriter tw, ISettingsRepository settingRepo, IQuoteRepository quoteRepo)
         {
