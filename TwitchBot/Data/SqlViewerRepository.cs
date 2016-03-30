@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TwitchBot.Model;
 
 namespace TwitchBot.Data
 {
@@ -76,6 +77,77 @@ namespace TwitchBot.Data
                 }
 
                 return 0;
+            }
+        }
+
+        public void AddUpdateBnet(string user, string bnet)
+        {
+            string connString = Config.ConnectionString;
+            using (SqlConnection conn = new SqlConnection(connString))
+            using (SqlCommand comm = new SqlCommand("sp_ViewerInfo_Bnet_AddUpdate @Username, @Bnet", conn))
+            {
+                conn.Open();
+
+                var prms = new SqlParameter[]
+                {
+                    new SqlParameter("Username", System.Data.SqlDbType.VarChar, 255) { Value = user },
+                    new SqlParameter("Bnet", System.Data.SqlDbType.VarChar, 50) { Value = bnet }
+                };
+
+                comm.Parameters.AddRange(prms);
+
+                comm.ExecuteNonQuery();
+            }
+        }
+
+        public void AddUpdateNote(string user, string note)
+        {
+            string connString = Config.ConnectionString;
+            using (SqlConnection conn = new SqlConnection(connString))
+            using (SqlCommand comm = new SqlCommand("sp_ViewerInfo_Note_AddUpdate @Username, @Note", conn))
+            {
+                conn.Open();
+
+                var prms = new SqlParameter[]
+                {
+                    new SqlParameter("Username", System.Data.SqlDbType.VarChar, 255) { Value = user },
+                    new SqlParameter("Note", System.Data.SqlDbType.VarChar, -1) { Value = note }
+                };
+
+                comm.Parameters.AddRange(prms);
+
+                comm.ExecuteNonQuery();
+            }
+        }
+
+        public ViewerInfo GetInfo(string user)
+        {
+            string connString = Config.ConnectionString;
+            using (SqlConnection conn = new SqlConnection(connString))
+            using (SqlCommand comm = new SqlCommand("sp_ViewerInfo_Get @username", conn))
+            {
+                conn.Open();
+
+                var prms = new SqlParameter[]
+                {
+                    new SqlParameter("Username", System.Data.SqlDbType.VarChar, 255) { Value = user },
+                };
+
+                comm.Parameters.AddRange(prms);
+
+                SqlDataReader reader = comm.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    return new ViewerInfo
+                    {
+                        Username = (string)reader["Username"],
+                        Bnet = reader["Bnet"] != DBNull.Value ? (string)reader["Bnet"] : null,
+                        Note = reader["Note"] != DBNull.Value ? (string)reader["Note"] : null,
+                    };
+                }
+
+                return null;
             }
         }
 

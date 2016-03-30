@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TwitchBot.Model;
 
 namespace TwitchBot.Data
 {
@@ -11,5 +12,9 @@ namespace TwitchBot.Data
         void AddUpdateViewer(string user, string channel, string streamID);
         void AddUpdateViewers(IEnumerable<string> users, string channel, string streamID);
         int GetUniqueViewerCount(string channel, string streamID);
+
+        void AddUpdateBnet(string user, string bnet);
+        void AddUpdateNote(string user, string note);
+        ViewerInfo GetInfo(string user);
     }
 }

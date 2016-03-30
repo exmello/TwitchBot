@@ -59,6 +59,8 @@ namespace TwitchBot
                 katbot.CommandList.Add(new Commands.Define(connection.Writer, dictionaryDb));
                 katbot.CommandList.Add(new Commands.Blasphemy(connection.Writer, api, blasphDb));
                 katbot.CommandList.Add(quoteCommand);
+                katbot.CommandList.Add(new Commands.Bnet(connection.Writer, viewerDb));
+                katbot.CommandList.Add(new Commands.Note(connection.Writer, viewerDb));
 
                 katbot.KeywordProcessors.Add(new Commands.Question(connection.Writer, api, dictionaryDb));
                 katbot.KeywordProcessors.Add(new Commands.KeywordMatcher(connection.Writer, settingsDb));

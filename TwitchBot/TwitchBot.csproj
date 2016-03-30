@@ -69,6 +69,7 @@
     <Compile Include="Akinator\Question.cs" />
     <Compile Include="Akinator\State.cs" />
     <Compile Include="Commands\Blasphemy.cs" />
+    <Compile Include="Commands\Note.cs" />
     <Compile Include="Commands\IKeyword.cs" />
     <Compile Include="Commands\IEvent.cs" />
     <Compile Include="Commands\Define.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Commands\FullWidth.cs" />
     <Compile Include="Commands\Question.cs" />
     <Compile Include="Commands\Madlib.cs" />
+    <Compile Include="Commands\Bnet.cs" />
     <Compile Include="Commands\Viewers.cs" />
     <Compile Include="Commands\Uptime.cs" />
     <Compile Include="Commands\Command.cs" />
@@ -105,6 +107,7 @@
     <Compile Include="Model\MessageActionType.cs" />
     <Compile Include="Model\MessageInfo.cs" />
     <Compile Include="Model\VerseNames.cs" />
+    <Compile Include="Model\ViewerInfo.cs" />
     <Compile Include="RoflBot.cs" />
     <Compile Include="KatBot.cs" />
     <Compile Include="Program.cs" />
