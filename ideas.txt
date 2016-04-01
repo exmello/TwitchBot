@@ -3,11 +3,12 @@
 (completed) you should add a non repetitive variable to count how many individual viewers there have been from beginning of stream to end
 (completed) madlib
 (completed) @itskatnipbot (Config.Nickname) Who/What/Where/When/Why
+(completed) !bnet #asdf1234 . add bnet info for current user
+(completed) !bnet [user] . query bnet info of [user]
+(completed) auto url expand, based on this python: https://github.com/aadityabhatia/url-expander/blob/master/app.py
 
 (deferred until more data) !stats [user] . count how many streams and duration user has viewed
 
-!bnet #asdf1234 . add bnet info for current user
-!bnet [user] . query bnet info of [user]
 !small equiv to !full unicode conversion
 
 gamble
