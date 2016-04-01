@@ -20,7 +20,7 @@ namespace TwitchBot
                 Channel = preamble.Length > 2 ? preamble[2].TrimStart('#') : null,
                 Action = MapActionType(preamble[1]),
                 Username = sendingUser[0],
-                Content = message.Length > 2 ? message[2] : null
+                Content = message.Length > 2 ? raw.Substring(message[0].Length + message[1].Length + 2) : null
             };
         }
 

@@ -69,6 +69,7 @@
     <Compile Include="Akinator\Question.cs" />
     <Compile Include="Akinator\State.cs" />
     <Compile Include="Commands\Blasphemy.cs" />
+    <Compile Include="Commands\UrlExpander.cs" />
     <Compile Include="Commands\Note.cs" />
     <Compile Include="Commands\IKeyword.cs" />
     <Compile Include="Commands\IEvent.cs" />

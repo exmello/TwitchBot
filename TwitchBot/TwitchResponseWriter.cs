@@ -20,14 +20,18 @@ namespace TwitchBot
 
         public void RespondMessage(string message)
         {
-            //if the message queue is small, add.  otherwise only add if unique
-            //Queue.Contains might be an expensive operation?
-            if (messageQueue.Count < 4 || !messageQueue.Contains(message))
+            //avoid accidental command execution
+            if (message != null && message.Length > 0 && message[0] != '.' && message[0] != '/')
             {
-                messageQueue.Enqueue(message);
-            }
+                //if the message queue is small, add.  otherwise only add if unique
+                //Queue.Contains might be an expensive operation?
+                if (messageQueue.Count < 4 || !messageQueue.Contains(message))
+                {
+                    messageQueue.Enqueue(message);
+                }
 
-            Task.Run(() => RespondFromQueue());
+                Task.Run(() => RespondFromQueue());
+            }
         }
 
         public void RespondFromQueue()

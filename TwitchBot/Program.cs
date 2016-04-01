@@ -65,6 +65,7 @@ namespace TwitchBot
                 katbot.KeywordProcessors.Add(new Commands.Question(connection.Writer, api, dictionaryDb));
                 katbot.KeywordProcessors.Add(new Commands.KeywordMatcher(connection.Writer, settingsDb));
                 katbot.KeywordProcessors.Add(quoteCommand);
+                katbot.KeywordProcessors.Add(new Commands.UrlExpander(connection.Writer));
 
                 //Start message loop
                 while (true)
