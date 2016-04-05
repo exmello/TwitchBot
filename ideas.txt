@@ -20,4 +20,6 @@ weekend projects:
  - hosting
  - twitchalerts
 
-
+admin login:
+https://www.simple-talk.com/dotnet/.net-framework/creating-custom-oauth-middleware-for-mvc-5/
+https://github.com/RockstarLabs/OwinOAuthProviders
