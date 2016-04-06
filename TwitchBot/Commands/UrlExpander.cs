@@ -134,10 +134,13 @@ namespace TwitchBot.Commands
                         removedItems.Add(item.Key);
                     }
                 }
-                foreach (string key in removedItems)
-	            {
-                    Items.Remove(key);
-	            }
+                if (removedItems != null)
+                {
+                    foreach (string key in removedItems)
+                    {
+                        Items.Remove(key);
+                    }
+                }
             }
 
             public CachedUrl Get(string shortUrl)

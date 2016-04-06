@@ -45,7 +45,7 @@ namespace TwitchBot
 
                 //start bot   
                 KatBot katbot = new KatBot(connection.Writer, api);
-                //AkinatorBot akinatorBot = new AkinatorBot(connection.Writer, api);
+                AkinatorBot akinatorBot = new AkinatorBot(connection.Writer, api);
 
                 var quoteCommand = new Commands.Quote(connection.Writer, settingsDb, quoteDb);
 
@@ -75,8 +75,8 @@ namespace TwitchBot
                     if (message != null)
                     {
                         katbot.ProcessMessage(message);
-                        //akinatorBot.ProcessMessage(message);
-                        //akinatorBot.Update();
+                        akinatorBot.ProcessMessage(message);
+                        akinatorBot.Update();
                     }
                 }
             }
