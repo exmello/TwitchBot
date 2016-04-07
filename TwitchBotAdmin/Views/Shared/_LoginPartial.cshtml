@@ -2,33 +2,44 @@
 @using Microsoft.Owin.Security
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-    {
-    @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-    </ul>
-    }
+    var claimsIdentity = User.Identity as System.Security.Claims.ClaimsIdentity;
+    var picture = claimsIdentity.Claims.Where(r => r.Type == "Picture").FirstOrDefault();
+
+    <!-- menu prile quick info -->
+    <div class="profile">
+        <div class="profile_pic">
+        @if (picture != null && !picture.Value.IsEmpty())
+        {
+            <img src="@picture.Value" alt="..." class="img-circle profile_img">
+        }
+        else
+        {
+            <img src="~/Content/images/user.png" alt="..." class="img-circle profile_img">
+        }
+        </div>
+        <div class="profile_info">
+            <span>Welcome,</span>
+            <h2>@User.Identity.GetUserName()</h2>
+        </div>
+    </div>
+    <!-- /menu prile quick info -->
 }
 else
 {
-    using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = Context.Request.RawUrl, Provider="Twitch" }, FormMethod.Post, new { id = "loginForm", @class = "navbar-right" }))
-    {        
+    using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = Context.Request.RawUrl, Provider = "Twitch" }, FormMethod.Post, new { id = "loginForm" }))
+    {
     @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
+    <div class="profile">
+        <div class="profile_info">
         @foreach (AuthenticationDescription p in Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes())
         {
-        <li>
             <a href="javascript:document.getElementById('loginForm').submit()" title="Log in using your @p.Caption account">
                 Login using @p.AuthenticationType
             </a>
-        </li>
         }
-    </ul>
+        </div>
+    </div>
     }
 }

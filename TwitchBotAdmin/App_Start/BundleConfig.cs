@@ -26,6 +26,18 @@ namespace TwitchBotAdmin
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            //admin template bundles
+            bundles.Add(new ScriptBundle("~/bundles/template-core").Include(
+                        "~/js/jquery.min.js",
+                        "~/js/bootstrap.min.js"));
+
+            bundles.Add(new StyleBundle("~/Content/template-css").Include(
+                      "~/Content/bootstrap.min.css",
+                      "~/fonts/css/font-awesome.min.css",
+                      "~/Content/animate.min.css",
+                      "~/Content/custom.css"));
+
         }
     }
 }

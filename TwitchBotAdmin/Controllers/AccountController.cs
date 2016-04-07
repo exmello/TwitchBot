@@ -98,6 +98,10 @@ namespace TwitchBotAdmin.Controllers
                     result = await UserManager.AddLoginAsync(user.Id, loginInfo.Login);
                     if (result.Succeeded)
                     {
+                        var claim = (await AuthenticationManager.GetExternalLoginInfoAsync()).ExternalIdentity.Claims.First(
+                                a => a.Type == "Picture");
+                        user.Claims.Add(new IdentityUserClaim() { ClaimType = claim.Type, ClaimValue = claim.Value });                       
+
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                         return RedirectToLocal(returnUrl);
                     }
