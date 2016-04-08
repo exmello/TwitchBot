@@ -81,16 +81,5 @@ namespace TwitchBot
                 return _ignoreSelf.Value;
             }
         }
-
-        private static string _connectionString = null;
-        public static string ConnectionString
-        {
-            get
-            {
-                if (_connectionString == null)
-                    _connectionString = ConfigurationManager.AppSettings["TwitchBot.ConnectionString"];
-                return _connectionString;
-            }
-        }
     }
 }

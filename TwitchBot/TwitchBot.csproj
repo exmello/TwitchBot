@@ -86,54 +86,15 @@
     <Compile Include="Commands\HowLong.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Config.cs" />
-    <Content Include="Data\Create Database.sql" />
-    <Compile Include="Data\IBlasphemyRepository.cs" />
-    <Compile Include="Data\SqlBlasphemyRepository.cs" />
-    <Compile Include="Data\SqlQuoteRepository.cs" />
-    <Compile Include="Data\IQuoteRepository.cs" />
-    <Compile Include="Data\ISettingsRepository.cs" />
-    <Compile Include="Data\IDictionaryRepository.cs" />
-    <Compile Include="Data\SqlSettingsRepository.cs" />
-    <Compile Include="Data\SqlDictionaryRepository.cs" />
-    <Compile Include="Data\SqlViewerRepository.cs" />
-    <Compile Include="Data\IViewerRepository.cs" />
-    <Compile Include="Dictionary\DefinitionParser.cs" />
-    <Compile Include="Dictionary\DictionaryParser.cs" />
-    <Compile Include="Dictionary\DefinitionResult.cs" />
-    <Compile Include="Dictionary\WordsResult.cs" />
-    <Compile Include="Model\ITwitchBot.cs" />
-    <Compile Include="Model\Quote.cs" />
-    <Compile Include="Model\Nickname.cs" />
-    <Compile Include="Model\Keyword.cs" />
-    <Compile Include="Model\MessageActionType.cs" />
-    <Compile Include="Model\MessageInfo.cs" />
-    <Compile Include="Model\VerseNames.cs" />
-    <Compile Include="Model\ViewerInfo.cs" />
     <Compile Include="RoflBot.cs" />
     <Compile Include="KatBot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TwitchApi\Result\ChattersResult.cs" />
-    <Compile Include="TwitchApi\TwitchApiClient.cs" />
-    <Compile Include="TwitchApi\Result\StreamResult.cs" />
-    <Compile Include="TwitchApi\Result\FollowTargetResult.cs" />
     <Compile Include="TwitchConnection.cs" />
     <Compile Include="TwitchRawMessageProcessor.cs" />
     <Compile Include="TwitchResponseWriter.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Dictionary\data.adj">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Dictionary\data.adv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Dictionary\data.noun">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Dictionary\data.verb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
@@ -145,7 +106,23 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\TwitchBot.Data\TwitchBot.Data.csproj">
+      <Project>{9cd9a29b-0565-4b8c-beef-8c71d97aefeb}</Project>
+      <Name>TwitchBot.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TwitchBot.Model\TwitchBot.Model.csproj">
+      <Project>{f209bc43-d493-4dd7-a64d-c5138696e247}</Project>
+      <Name>TwitchBot.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TwitchBot.TwitchApi\TwitchBot.TwitchApi.csproj">
+      <Project>{9e7120cc-0c24-4490-abb0-754972879989}</Project>
+      <Name>TwitchBot.TwitchApi</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TwitchApi\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

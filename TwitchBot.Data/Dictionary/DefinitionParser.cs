@@ -1,21 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace TwitchBot.Dictionary
+namespace TwitchBot.Data.Dictionary
 {
-    public class DictionaryParser
+    public class DefinitionParser
     {
         public static void Main(string[] args)
         {
-            ImportWords("Dictionary/data.verb", "if not exists(select 1 from Verbs where word = @word) insert into Verbs values (@word)");
-            ImportWords("Dictionary/data.adj", "if not exists(select 1 from Adjectives where word = @word) insert into Adjectives values (@word)");
-            ImportWords("Dictionary/data.noun", "if not exists(select 1 from Nouns where word = @word) insert into Nouns values (@word)");
-            ImportWords("Dictionary/data.adv", "if not exists(select 1 from Adverbs where word = @word) insert into Adverbs values (@word)");
+            ImportWords("Dictionary/data.verb", "update Verbs set Definition = @definition where word = @word");
+            ImportWords("Dictionary/data.adj", "update Adjectives set Definition = @definition where word = @word");
+            ImportWords("Dictionary/data.noun", "update Nouns set Definition = @definition where word = @word");
+            ImportWords("Dictionary/data.adv", "update Adverbs set Definition = @definition where word = @word");
         }
 
         private static void ImportWords(string file, string command)
@@ -28,7 +23,11 @@ namespace TwitchBot.Dictionary
             {
                 conn.Open();
 
-                var prms = new SqlParameter[] { new SqlParameter("word", System.Data.SqlDbType.VarChar, 255) };
+                var prms = new SqlParameter[] 
+                { 
+                    new SqlParameter("word", System.Data.SqlDbType.VarChar, 255),
+                    new SqlParameter("definition", System.Data.SqlDbType.VarChar, -1)
+                };
                 comm.Parameters.AddRange(prms);
 
                 int start = 17;
@@ -52,7 +51,13 @@ namespace TwitchBot.Dictionary
                     }
 
                     prms[0].Value = line.Substring(start, end).Replace("_"," ");
-                    comm.ExecuteNonQuery();
+
+                    int defStart = line.IndexOf('|');
+                    if (defStart > 0)
+                    {
+                        prms[1].Value = line.Substring(defStart + 1).Trim();
+                        comm.ExecuteNonQuery();
+                    }
 
                 } while (!reader.EndOfStream);
 

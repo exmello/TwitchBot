@@ -1,7 +1,7 @@
 ﻿
 namespace TwitchBot.Model
 {
-    interface ITwitchBot
+    public interface ITwitchBot
     {
         void ProcessMessage(MessageInfo message);
         void Update();

@@ -181,7 +181,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\MyChannelController.cs" />
+    <Compile Include="Controllers\ChannelController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -257,7 +257,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\MyChannel\" />
+    <Folder Include="Views\Channel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -265,6 +265,20 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TwitchBot.Data\TwitchBot.Data.csproj">
+      <Project>{9cd9a29b-0565-4b8c-beef-8c71d97aefeb}</Project>
+      <Name>TwitchBot.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TwitchBot.Model\TwitchBot.Model.csproj">
+      <Project>{f209bc43-d493-4dd7-a64d-c5138696e247}</Project>
+      <Name>TwitchBot.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TwitchBot.TwitchApi\TwitchBot.TwitchApi.csproj">
+      <Project>{9e7120cc-0c24-4490-abb0-754972879989}</Project>
+      <Name>TwitchBot.TwitchApi</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

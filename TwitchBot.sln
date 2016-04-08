@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitchBot", "TwitchBot\Twit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitchBotAdmin", "TwitchBotAdmin\TwitchBotAdmin.csproj", "{DE9BE3C3-1D85-4F5D-94FB-30531E91CF1F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitchBot.Data", "TwitchBot.Data\TwitchBot.Data.csproj", "{9CD9A29B-0565-4B8C-BEEF-8C71D97AEFEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitchBot.Model", "TwitchBot.Model\TwitchBot.Model.csproj", "{F209BC43-D493-4DD7-A64D-C5138696E247}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitchBot.TwitchApi", "TwitchBot.TwitchApi\TwitchBot.TwitchApi.csproj", "{9E7120CC-0C24-4490-ABB0-754972879989}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +27,18 @@ Global
 		{DE9BE3C3-1D85-4F5D-94FB-30531E91CF1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE9BE3C3-1D85-4F5D-94FB-30531E91CF1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE9BE3C3-1D85-4F5D-94FB-30531E91CF1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CD9A29B-0565-4B8C-BEEF-8C71D97AEFEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CD9A29B-0565-4B8C-BEEF-8C71D97AEFEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CD9A29B-0565-4B8C-BEEF-8C71D97AEFEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CD9A29B-0565-4B8C-BEEF-8C71D97AEFEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F209BC43-D493-4DD7-A64D-C5138696E247}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F209BC43-D493-4DD7-A64D-C5138696E247}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F209BC43-D493-4DD7-A64D-C5138696E247}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F209BC43-D493-4DD7-A64D-C5138696E247}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E7120CC-0C24-4490-ABB0-754972879989}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E7120CC-0C24-4490-ABB0-754972879989}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E7120CC-0C24-4490-ABB0-754972879989}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E7120CC-0C24-4490-ABB0-754972879989}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
