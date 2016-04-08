@@ -16,11 +16,11 @@ namespace TwitchBot.Commands
     public class KeywordMatcher : IKeyword
     {
         private readonly TwitchResponseWriter tw;
-        private readonly ISettingsRepository repo;
+        private readonly IChannelRepository repo;
 
         private IList<KeywordRegex> keywordRegex = null;
 
-        public KeywordMatcher(TwitchResponseWriter tw, ISettingsRepository repo)
+        public KeywordMatcher(TwitchResponseWriter tw, IChannelRepository repo)
         {
             this.tw = tw;
             this.repo = repo;

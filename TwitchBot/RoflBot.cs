@@ -40,20 +40,11 @@ namespace TwitchBot
         {
             return new string[]
             {
-                "poopdick story? MrDestructoid",
-                "why is your aim so off today? MrDestructoid",
-                "#roflpoke2016 MrDestructoid",
-                "show beard pls KappaPride MrDestructoid",
-                "why don't you play other heros? MrDestructoid",
                 "SMOrc Me have no aim SMOrc Me have no brain SMOrc Me proud to be Winston main SMOrc",
                 "Kappa",
-                "stop being gay KappaPride",
                 " ( ͡° ͜ʖ ͡°)┌∩┐THIS IS A TviQuoKusaii STREAM NOW ( ͡° ͜ʖ ͡°)┌∩┐",
                 "Ṭ̷Ř̥̤̤̻̥̥ͧ̏ͦ̋͑͡Ɨ̘͉̲̯̹͔̿ͯͦ͋͂͡Ǥ̸̷͈͇͉̟̫͚͖͉̼̰̱̩͔̙̖̱̌͑ͥ̐ͤͧ̂͌̃ͬ͟͜ͅĠ̟͓͇̺̭̮̇̄̍̃ͬͣ͂ͪ̽̃̀͜Ɇ̛ͦ̄̓ͪ̇̌̄̒̊̓̾̐͒͋ͭ̀͗̚͝҉̧͙͍̦̣̤͇͓͙̲͍̪̤̻͢ͅṜ͓̠̘̥̼̈́̌ͬ͜ͅḚ̬̯͎͉̙̉ͧ͆̕Ƌ̶",
-                "trump for prez",
-                "MEMES DansGame",
                 "What kind of Alienware computer should I get?",
-                "Quit your bitching Roflgator DansGame",
                 "☐ Not rekt☑ Rekt☑ Really Rekt☑ Tyrannosaurus Rekt☑ Cash4Rekt.com☑ Grapes of Rekt☑ Ship Rekt☑ Rekt markes the spot☑ Caught rekt handed☑ The Rekt Side Story☑ Singin' In The Rekt☑ Painting The Roses Rekt☑ Rekt Van Winkle☑ Parks and Rekt☑ Lord of the Rekts: The Reking of the King☑ Star Trekt☑ The Rekt Prince of Bel-Air☑ A Game of Rekt☑ Rektflix☑ Rekt it like it's hot☑ RektBox 360☑ The Rekt-men☑ School Of Rekt☑ I am Fire, I am Rekt☑ Rekt and Roll☑ Pro",
                 "ヽヽ｀ヽ｀、ヽヽ｀ヽ｀、ヽヽ｀ヽ、ヽヽ｀ヽ｀、ヽヽ｀ヽ｀、｀、ヽヽ｀ヽ｀、ヽヽ｀ヽ｀、ヽヽ｀ヽ｀、ヽヽ｀ヽ｀、ヽヽ｀ヽ｀、ヽヽ｀ヽ｀、ヽヽ༼ຈل͜ຈ༽ﾉ☂ ɪᴛs ʀᴀɪɴɪɴɢ sᴀʟᴛ! ヽ༼ຈل͜ຈ༽ﾉ☂ ヽ｀ヽ｀、ヽヽ｀ヽ｀、｀ヽ｀、ヽヽ｀ヽ｀、ヽヽ｀ヽ、ヽヽ｀ヽ",
                 "~~~*~~~~*~~ don't let your memes be dreams ~~~*~~"

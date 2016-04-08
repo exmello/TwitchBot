@@ -39,7 +39,7 @@ namespace TwitchBot
                 //db storage
                 IViewerRepository viewerDb = new SqlViewerRepository();
                 IDictionaryRepository dictionaryDb = new SqlDictionaryRepository();
-                ISettingsRepository settingsDb = new SqlSettingsRepository();
+                IChannelRepository channelDb = new SqlChannelRepository();
                 IQuoteRepository quoteDb = new SqlQuoteRepository();
                 IBlasphemyRepository blasphDb = new SqlBlasphemyRepository();
 
@@ -47,7 +47,7 @@ namespace TwitchBot
                 KatBot katbot = new KatBot(connection.Writer, api);
                 AkinatorBot akinatorBot = new AkinatorBot(connection.Writer, api);
 
-                var quoteCommand = new Commands.Quote(connection.Writer, settingsDb, quoteDb);
+                var quoteCommand = new Commands.Quote(connection.Writer, channelDb, quoteDb);
 
                 //add commands
                 katbot.CommandList.Add(new Commands.Command(connection.Writer));
@@ -63,7 +63,7 @@ namespace TwitchBot
                 katbot.CommandList.Add(new Commands.Note(connection.Writer, viewerDb));
 
                 katbot.KeywordProcessors.Add(new Commands.Question(connection.Writer, api, dictionaryDb));
-                katbot.KeywordProcessors.Add(new Commands.KeywordMatcher(connection.Writer, settingsDb));
+                katbot.KeywordProcessors.Add(new Commands.KeywordMatcher(connection.Writer, channelDb));
                 katbot.KeywordProcessors.Add(quoteCommand);
                 katbot.KeywordProcessors.Add(new Commands.UrlExpander(connection.Writer));
 

@@ -17,7 +17,7 @@ namespace TwitchBot.Commands
     public class Quote : ICommand, IKeyword
     {
         private readonly TwitchResponseWriter tw;
-        private readonly ISettingsRepository settingRepo;
+        private readonly IChannelRepository settingRepo;
         private readonly IQuoteRepository quoteRepo;
 
         private const string DATE_FORMAT = "MMM yyyy";
@@ -26,7 +26,7 @@ namespace TwitchBot.Commands
         private Regex commandRegex = new Regex("^!quote\\s?@?(?<attribution>[0-9a-zA-Z_]*?)\\s$", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
         private Regex quoteRegex = new Regex("^\"(?<text>-?[^\"]+?)\"[- ]*@?(?<attribution>[0-9a-zA-Z_]*?)\\s.*\\s$", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
 
-        public Quote(TwitchResponseWriter tw, ISettingsRepository settingRepo, IQuoteRepository quoteRepo)
+        public Quote(TwitchResponseWriter tw, IChannelRepository settingRepo, IQuoteRepository quoteRepo)
         {
             this.tw = tw;
             this.settingRepo = settingRepo;

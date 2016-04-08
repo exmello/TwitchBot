@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TwitchBot.Data;
+using TwitchBotAdmin.Models;
 
 namespace TwitchBotAdmin.Controllers
 {
     [Authorize]
     public class ChannelController : Controller
     {
+        private IChannelRepository db = new SqlChannelRepository();
+
         [Route("channel/{channelName?}")]
         public ActionResult Index(string channelName)
         {
@@ -18,10 +22,13 @@ namespace TwitchBotAdmin.Controllers
 
             //this is the channel owner if channel name and user name are the same
             bool channelOwner = (channelName.ToLowerInvariant() == User.Identity.Name.ToLowerInvariant());
-                
 
-            
-            return View();
+            var data = db.GetChannelForDashboard(channelName);
+
+            if(data == null)
+                return HttpNotFound();
+
+            return View(new ChannelDashboardViewModel { ChannelForDashboardResult = data });
         }
 
 

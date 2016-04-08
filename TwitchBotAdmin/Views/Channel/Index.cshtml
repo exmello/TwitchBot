@@ -1,0 +1,35 @@
+﻿@model TwitchBotAdmin.Models.ChannelDashboardViewModel
+@{
+    ViewBag.Title = Model.ChannelForDashboardResult.Name;
+    ViewBag.Small = "channel dashboard";
+}
+
+
+<!-- top tiles -->
+<div class="row tile_count">
+    <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
+    <div class="left"></div>
+    <div class="right">
+        <span class="count_top"><i class="fa fa-twitch"></i> Total Streams</span>
+        <div class="count">@Model.ChannelForDashboardResult.StreamCount</div>
+    </div>
+    </div>
+    <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
+    <div class="left"></div>
+    <div class="right">
+        <span class="count_top"><i class="fa fa-key"></i> Total Keywords</span>
+        <div class="count">@Model.ChannelForDashboardResult.KeywordCount</div>
+    </div>
+    </div>
+    <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
+    <div class="left"></div>
+    <div class="right">
+        <span class="count_top"><i class="fa fa-quote-right"></i> Total Quotes</span>
+        <div class="count green">@Model.ChannelForDashboardResult.QuoteCount</div>
+        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>@Model.ChannelForDashboardResult.QuoteIncreasePercent% </i> From last Week</span>
+    </div>
+    </div>
+          
+</div>
+<!-- /top tiles -->
+

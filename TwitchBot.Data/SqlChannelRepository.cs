@@ -5,7 +5,7 @@ using TwitchBot.Model;
 
 namespace TwitchBot.Data
 {
-    public class SqlSettingsRepository : ISettingsRepository
+    public class SqlChannelRepository : IChannelRepository
     {
         public IEnumerable<Keyword> GetAllKeywords()
         {
@@ -48,6 +48,38 @@ namespace TwitchBot.Data
                         Regex = (string)reader["Regex"]
                     };
                 }
+            }
+        }
+
+
+        public ChannelForDashboardResult GetChannelForDashboard(string channelName)
+        {
+            string connString = Config.ConnectionString;
+            using (SqlConnection conn = new SqlConnection(connString))
+            using (SqlCommand comm = new SqlCommand("sp_Channel_GetForDashboard @ChannelName", conn))
+            {
+                conn.Open();
+
+                var prms = new SqlParameter[] { new SqlParameter("ChannelName", System.Data.SqlDbType.VarChar, 255) { Value = channelName } };
+
+                comm.Parameters.AddRange(prms);
+
+                SqlDataReader reader = comm.ExecuteReader();
+
+                ChannelForDashboardResult result = null;
+                if (reader.Read())
+                {
+                    result = new ChannelForDashboardResult
+                    {
+                        Name = (string)reader["Name"],
+                        StreamCount = (int)reader["StreamCount"],
+                        KeywordCount = (int)reader["KeywordCount"],
+                        QuoteCount = (int)reader["QuoteCount"],
+                        QuoteIncreasePercent = (decimal)reader["QuoteIncreasePercent"]
+                    };
+                }
+
+                return result;
             }
         }
     }

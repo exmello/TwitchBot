@@ -37,7 +37,6 @@ namespace TwitchBotAdmin
                       "~/fonts/css/font-awesome.min.css",
                       "~/Content/animate.min.css",
                       "~/Content/custom.css"));
-
         }
     }
 }
