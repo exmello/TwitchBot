@@ -37,6 +37,12 @@ namespace TwitchBotAdmin
                       "~/fonts/css/font-awesome.min.css",
                       "~/Content/animate.min.css",
                       "~/Content/custom.css"));
+
+            bundles.Add(new StyleBundle("~/Content/datatable-css").Include(
+                      "~/js/datatables/jquery.dataTables.min.css",
+                      "~/js/datatables/fixedHeader.bootstrap.min.css",
+                      "~/js/datatables/responsive.bootstrap.min.css",
+                      "~/js/datatables/scroller.bootstrap.min.css"));
         }
     }
 }

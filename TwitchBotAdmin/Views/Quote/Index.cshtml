@@ -1,0 +1,66 @@
+﻿@model IEnumerable<TwitchBot.Model.Quote>
+@{
+    ViewBag.Title = "Quotes";
+    ViewBag.Small = ViewContext.RouteData.Values["channelName"];
+}
+
+@section styles {
+@Styles.Render("~/Content/datatable-css")
+}
+
+
+<table class="table table-striped table-bordered">
+<thead>
+    <tr>
+    <th>Text</th>
+    <th>Attributed To</th>
+    <th>Attributed Date</th>
+    <th>Created By</th>
+    <th>Created Date</th>
+    <th></th>
+    </tr>
+</thead>
+<tbody>
+@foreach(var quote in Model)
+{
+    <tr data-id="@quote.ID">
+        <td>@quote.Text</td>
+        <td>@quote.AttributedTo</td>
+        <td>@quote.AttributedDate.ToString("MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture)</td>
+        <td>@quote.CreatedBy</td>
+        <td>@quote.CreatedDate.ToString("MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture)</td>
+        <td nowrap>
+            <a class="edit" href="#">Edit</a> |
+            <a class="remove" href="#">Remove</a>
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+ 
+@section scripts {
+@Scripts.Render("~/js/datatables/js/jquery.dataTables.js")
+
+    <script>
+    $(function () {
+        $('tr a.edit').click(function (e) {
+            e.preventDefault();
+
+        });
+
+        $('tr a.remove').click(function (e) {
+            e.preventDefault();
+            
+            if (confirm('Are you sure you want to remove this quote?')) {
+                var $this = $(this);
+                var row = $this.closest('tr');
+
+                $.post("/Quote/Delete/" + row.data('id'))
+                .done(function () {
+                    row.remove();
+                });
+            }
+        });
+    });
+    </script>
+}
