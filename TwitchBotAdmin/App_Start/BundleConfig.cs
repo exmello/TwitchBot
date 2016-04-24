@@ -30,7 +30,8 @@ namespace TwitchBotAdmin
             //admin template bundles
             bundles.Add(new ScriptBundle("~/bundles/template-core").Include(
                         "~/js/jquery.min.js",
-                        "~/js/bootstrap.min.js"));
+                        "~/js/bootstrap.min.js",
+                        "~/js/jquery.nicescroll.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/template-css").Include(
                       "~/Content/bootstrap.min.css",

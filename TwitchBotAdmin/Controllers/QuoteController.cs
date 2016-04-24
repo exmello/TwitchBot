@@ -9,6 +9,7 @@ using TwitchBotAdmin.Models;
 
 namespace TwitchBotAdmin.Controllers
 {
+    [Authorize]
     public class QuoteController : Controller
     {
         private IQuoteRepository db = new SqlQuoteRepository();
